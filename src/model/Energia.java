@@ -16,7 +16,7 @@ public class Energia {
     private double[][] noviembre;
     private double[][] diciembre;
     
-    public Energia() {
+    public Energia(){
         enero = new double[31][24];
         febrero = new double[28][24];
         marzo = new double[31][24];
@@ -33,7 +33,7 @@ public class Energia {
         iniciarConsumos();
 
     }
-    private void iniciarConsumos() {
+    private void iniciarConsumos(){
         Random rand = new Random();
         llenarConsumo(enero, rand);
         llenarConsumo(febrero, rand);
