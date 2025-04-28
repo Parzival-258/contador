@@ -59,6 +59,7 @@ public class Cliente {
             }
         }
         return franjas;
+        
     }
     public double[] consumoPorDias(int mes) {
         Contador contador = contadores.get(0);
