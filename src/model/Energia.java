@@ -31,7 +31,6 @@ public class Energia {
         diciembre = new double[31][24];
 
         iniciarConsumos();
-
     }
     private void iniciarConsumos(){
         Random rand = new Random();
