@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 import controller.controladorCliente;
@@ -14,7 +16,7 @@ public class App {
         
         int opcion;
         do {
-            System.out.println("\n=== MENU PRINCIPAL ===");
+            System.out.println("\n=== MEN PRINCIPAL ===");
             System.out.println("1. Ver consumo mínimo del mes");
             System.out.println("2. Ver consumo máximo del mes");
             System.out.println("3. Ver consumo por franjas horarias del mes");
@@ -49,7 +51,9 @@ public class App {
                 case 5 -> {
                     System.out.print("Ingrese el mes (0=Enero, 1=Febrero, 2=Marzo, 3=Abril, 4=Mayo, 5=Junio, 6=Julio 7=Agosto, 8=Septiembre, 9=octubre, 10=noviembre, 11=Diciembre): ");
                     int mes = sc.nextInt();
-                    vista.mostrarValorFactura(mes);
+                    double valorFactura = controlador.calcularFactura(mes);
+                    NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("es", "CO"));
+                    System.out.println("Valor total de la factura: " + formato.format(valorFactura));
                 }
                 case 6 -> {
                     System.out.print("Ingrese el mes (0=Enero, 1=Febrero, 2=Marzo, 3=Abril, 4=Mayo, 5=Junio, 6=Julio 7=Agosto, 8=Septiembre, 9=octubre, 10=noviembre, 11=Diciembre): ");

@@ -14,4 +14,9 @@ public class controladorCliente {
     public Cliente getCliente() {
         return cliente;
     }
+    public double calcularFactura(int mes) {
+        return cliente.valorFactura(mes);
+    }
+    
+    
 }
