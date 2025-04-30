@@ -16,7 +16,7 @@ public class App {
         
         int opcion;
         do {
-            System.out.println("\n=== MEN PRINCIPAL ===");
+            System.out.println("\n=== MENU PRINCIPAL ===");
             System.out.println("1. Ver consumo mínimo del mes");
             System.out.println("2. Ver consumo máximo del mes");
             System.out.println("3. Ver consumo por franjas horarias del mes");
