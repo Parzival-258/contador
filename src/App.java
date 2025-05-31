@@ -31,26 +31,31 @@ public class App {
                 case 1 -> {
                     System.out.print("Ingrese el mes (0=Enero, 1=Febrero, 2=Marzo, 3=Abril, 4=Mayo, 5=Junio, 6=Julio 7=Agosto, 8=Septiembre, 9=octubre, 10=noviembre, 11=Diciembre): ");
                     int mes = sc.nextInt();
+                    vista.mostrarMatrizDelMes(mes);
                     vista.mostrarConsumoMinimo(mes);
                 }
                 case 2 -> {
                     System.out.print("Ingrese el mes (0=Enero, 1=Febrero, 2=Marzo, 3=Abril, 4=Mayo, 5=Junio, 6=Julio 7=Agosto, 8=Septiembre, 9=octubre, 10=noviembre, 11=Diciembre): ");
                     int mes = sc.nextInt();
-                    vista.mostrarConsumoMaximo(mes);
+                    vista.mostrarMatrizDelMes(mes);
+                    vista.consumoMaximo(mes);
                 }
                 case 3 -> {
                     System.out.print("Ingrese el mes (0=Enero, 1=Febrero, 2=Marzo, 3=Abril, 4=Mayo, 5=Junio, 6=Julio 7=Agosto, 8=Septiembre, 9=octubre, 10=noviembre, 11=Diciembre): ");
                     int mes = sc.nextInt();
+                    vista.mostrarMatrizDelMes(mes);
                     vista.mostrarConsumoFranjas(mes);
                 }
                 case 4 -> {
                     System.out.print("Ingrese el mes (0=Enero, 1=Febrero, 2=Marzo, 3=Abril, 4=Mayo, 5=Junio, 6=Julio 7=Agosto, 8=Septiembre, 9=octubre, 10=noviembre, 11=Diciembre): ");
                     int mes = sc.nextInt();
+                    vista.mostrarMatrizDelMes(mes);
                     vista.mostrarConsumoDias(mes);
                 }
                 case 5 -> {
                     System.out.print("Ingrese el mes (0=Enero, 1=Febrero, 2=Marzo, 3=Abril, 4=Mayo, 5=Junio, 6=Julio 7=Agosto, 8=Septiembre, 9=octubre, 10=noviembre, 11=Diciembre): ");
                     int mes = sc.nextInt();
+                    vista.mostrarMatrizDelMes(mes);
                     double valorFactura = controlador.calcularFactura(mes);
                     NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("es", "CO"));
                     System.out.println("Valor total de la factura: " + formato.format(valorFactura));

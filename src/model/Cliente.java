@@ -8,13 +8,18 @@ public class Cliente {
     private String correro;
     private String direccion;
     private ArrayList<Contador> contadores;
+    private Energia energia;
 
     public Cliente(String id, String tipoDeIdentificacion, String correo, String direccion) {
         this.id = id;
         this.tipoDeIdentificacion = tipoDeIdentificacion;
         this.correro = correo;
         this.direccion = direccion;
-        this.contadores = new ArrayList<>();        
+        this.contadores = new ArrayList<>(); 
+        this.energia = new Energia();
+    }
+    public Energia getEnergia() {
+    return energia;
     }
     public void agregarContador(Contador contador) {
         contadores.add(contador);

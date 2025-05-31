@@ -1,6 +1,9 @@
 package view;
 import model.Cliente;
 import model.Contador;
+
+import java.util.ArrayList;
+
 import controller.controladorCliente;
 
 public class vistaCliente {
@@ -9,14 +12,48 @@ public class vistaCliente {
     public vistaCliente(controladorCliente controlador) {
         this.controlador = controlador;
     } 
-    public void mostrarConsumoMinimo(int mes) {
-        Cliente cliente = controlador.getCliente();
-        System.out.println("consumo minimo del mes: " + cliente.consumoMinimo(mes) + "kw/H");
+   public void mostrarConsumoMinimo(int mes) {
+    double[][] matriz = controlador.getCliente().getEnergia().getMes(mes);
+    controlador.imprimirMatriz(matriz);
+
+    double min = controlador.consumoMinimo(mes);
+    System.out.println("Consumo mínimo del mes: " + min + " kW");
+
+    int contador = 0;
+    for (int i = 0; i < matriz.length; i++) {
+        for (int j = 0; j < matriz[i].length; j++) {
+            if (matriz[i][j] == min) {
+                System.out.println(" - Día " + (i + 1) + ", Hora " + j);
+                contador++;
+            }
+        }
     }
-    public void mostrarConsumoMaximo(int mes) {
-        Cliente cliente = controlador.getCliente();
-        System.out.println("consumo maximo del mes: " + cliente.consumoMaximo(mes) + "kw/H");
+    System.out.println("Este valor mínimo se repitió " + contador + " veces en el mes.");
+}
+   public double consumoMaximo(int mes) {
+    double[][] matriz = controlador.getCliente().getEnergia().getMes(mes);
+    controlador.imprimirMatriz(matriz);
+
+    double max = Double.MIN_VALUE;
+    ArrayList<Integer> dias = new ArrayList<>();
+
+    for (int i = 0; i < matriz.length; i++) {
+        for (int j = 0; j < matriz[i].length; j++) {
+            if (matriz[i][j] > max) {
+                max = matriz[i][j];
+                dias.clear();
+                dias.add(i + 1);
+            } else if (matriz[i][j] == max) {
+                dias.add(i + 1);
+            }
+        }
     }
+
+    System.out.println("\nConsumo máximo del mes: " + max + " kW");
+    System.out.println("Se repitió " + dias.size() + " veces en los días: " + dias);
+
+    return max;  
+}
     public void mostrarConsumoFranjas(int mes) {
         Cliente cliente = controlador.getCliente();
         double[] franjas = cliente.consumoPorFranja(mes);
@@ -42,4 +79,21 @@ public class vistaCliente {
         }
         System.out.println("consumo modificado exitosamente. ");
     }
+    public void mostrarMatrizDelMes(int mes) {
+    double[][] matriz = controlador.obtenerMatrizMes(mes);
+    if (matriz == null) {
+        System.out.println("Mes inválido.");
+        return;
+    }
+
+    System.out.println("Matriz de consumo del mes seleccionado:");
+    for (int i = 0; i < matriz.length; i++) {
+        System.out.print("Día " + (i + 1) + ": ");
+        for (int j = 0; j < matriz[i].length; j++) {
+            System.out.printf("%.2f ", matriz[i][j]);
+        }
+        System.out.println();
+    }
+}
+
 }
